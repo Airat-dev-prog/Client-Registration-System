@@ -1,0 +1,15 @@
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\bin\Debug\net8.0\CRS.Offer.Infrastructure.deps.json
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\bin\Debug\net8.0\CRS.Offer.Infrastructure.dll
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\bin\Debug\net8.0\CRS.Offer.Infrastructure.pdb
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\bin\Debug\net8.0\CRS.Offer.Core.dll
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\bin\Debug\net8.0\CRS.Offer.Core.pdb
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.csproj.AssemblyReference.cache
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.AssemblyInfoInputs.cache
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.AssemblyInfo.cs
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offe.0342D744.Up2Date
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.dll
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\refint\CRS.Offer.Infrastructure.dll
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\CRS.Offer.Infrastructure.pdb
+D:\Projects\CRS\CRS.Offer\CRS.Offer.Infrastructure\obj\Debug\net8.0\ref\CRS.Offer.Infrastructure.dll

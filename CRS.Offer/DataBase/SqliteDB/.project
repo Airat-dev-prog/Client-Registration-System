@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>OfferDB</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.jkiss.dbeaver.DBeaverNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Scripts/initdb</name>
+			<type>2</type>
+			<location>//D:/Projects/CRS/CRS.Offer/DataBase/initdb/</location>
+		</link>
+	</linkedResources>
+</projectDescription>

@@ -1,0 +1,1 @@
+dotnet ef migrations remove --startup-project ../CRS.Offer.API/CRS.Offer.API.csproj --project ../CRS.Offer.Infrastructure/CRS.Offer.Infrastructure.csproj --context DataBaseContext

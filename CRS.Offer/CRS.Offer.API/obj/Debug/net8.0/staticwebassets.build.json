@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "e992PTwYX6rOcGwLK2C2OSq61ZbxwISAqnIWdmhChH0=",
+  "Source": "CRS.Offer.API",
+  "BasePath": "_content/CRS.Offer.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,1 @@
+dotnet ef migrations add CreateDB --startup-project ../CRS.Offer.API/CRS.Offer.API.csproj --project ../CRS.Offer.Infrastructure/CRS.Offer.Infrastructure.csproj --context DataBaseContext

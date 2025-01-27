@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\CRS\\CRS.Offer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{70CD5361-901C-4B1E-B393-962FA076FB65}|CRS.Offer.API\\CRS.Offer.API.csproj|d:\\projects\\crs\\crs.offer\\crs.offer.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{70CD5361-901C-4B1E-B393-962FA076FB65}|CRS.Offer.API\\CRS.Offer.API.csproj|solutionrelative:crs.offer.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70CD5361-901C-4B1E-B393-962FA076FB65}|CRS.Offer.API\\CRS.Offer.API.csproj|d:\\projects\\crs\\crs.offer\\crs.offer.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70CD5361-901C-4B1E-B393-962FA076FB65}|CRS.Offer.API\\CRS.Offer.API.csproj|solutionrelative:crs.offer.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Projects\\CRS\\CRS.Offer\\CRS.Offer.API\\appsettings.json",
+              "RelativeDocumentMoniker": "CRS.Offer.API\\appsettings.json",
+              "ToolTip": "D:\\Projects\\CRS\\CRS.Offer\\CRS.Offer.API\\appsettings.json",
+              "RelativeToolTip": "CRS.Offer.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-27T19:07:11.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\CRS\\CRS.Offer\\CRS.Offer.API\\Program.cs",
+              "RelativeDocumentMoniker": "CRS.Offer.API\\Program.cs",
+              "ToolTip": "D:\\Projects\\CRS\\CRS.Offer\\CRS.Offer.API\\Program.cs",
+              "RelativeToolTip": "CRS.Offer.API\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAgwBAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T19:11:03.065Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
