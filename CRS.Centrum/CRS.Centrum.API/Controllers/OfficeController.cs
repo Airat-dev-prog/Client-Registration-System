@@ -64,6 +64,5 @@ namespace CRS.Offer.API.Controllers
 
             return _office;
         }
-
     }
 }

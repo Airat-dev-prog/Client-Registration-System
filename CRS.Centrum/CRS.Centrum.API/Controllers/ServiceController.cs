@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CRS.Offer.API.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
     public class ServicesController : ControllerBase
@@ -25,7 +24,6 @@ namespace CRS.Offer.API.Controllers
             return _servicesList;
         }
 
-
         [HttpGet("{id}")]
         public async Task<ActionResult<Service>> GetServiceAsync(Guid id)
         {
@@ -36,7 +34,6 @@ namespace CRS.Offer.API.Controllers
 
             return _service!;
         }
-
 
         [HttpPost]
         public async Task<ActionResult<Service>> CreateServiceAsync(Service service)
@@ -68,6 +65,5 @@ namespace CRS.Offer.API.Controllers
 
             return _service;
         }
-
     }
 }

@@ -35,7 +35,6 @@ namespace CRS.Offer.API.Controllers
             return _schedule!;
         }
 
-
         [HttpPost]
         public async Task<ActionResult<Schedule>> CreateScheduleAsync(Schedule schedule)
         {
@@ -66,6 +65,5 @@ namespace CRS.Offer.API.Controllers
 
             return _schedule;
         }
-
     }
 }
