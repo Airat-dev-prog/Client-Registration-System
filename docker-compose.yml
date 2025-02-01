@@ -14,15 +14,14 @@ services:
       POSTGRES_USER: postgres 
       POSTGRES_PASSWORD: postgres
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - pg-centrum-db:/var/lib/postgresql/data
       - ./CRS.Centrum/CRS.Centrum.Infrastructure/Data/DataBase/initdb:/docker-entrypoint-initdb.d/
-  API:
+  WebAPI_Centrum:
     container_name: 'API_Centrum'
     image: "Centrum_webapi"
     build:
       context: ./src
       dockerfile: Dockerfile
-    container_name: 'centrum-web-api'
     restart: always
     ports:
       - "5001:8080"
