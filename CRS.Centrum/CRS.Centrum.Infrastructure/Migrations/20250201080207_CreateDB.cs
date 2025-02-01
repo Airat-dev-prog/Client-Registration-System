@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CRS.Offer.Infrastructure.Migrations
+namespace CRS.Centrum.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class CreateDB : Migration
@@ -15,11 +15,11 @@ namespace CRS.Offer.Infrastructure.Migrations
                 name: "Offices",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Address = table.Column<string>(type: "TEXT", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    FinishTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Address = table.Column<string>(type: "text", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    FinishTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,9 @@ namespace CRS.Offer.Infrastructure.Migrations
                 name: "Masters",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    OfficeId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    OfficeId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,12 +49,12 @@ namespace CRS.Offer.Infrastructure.Migrations
                 name: "Services",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<double>(type: "REAL", nullable: false),
-                    Duration = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    MasterId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    OfficeId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<double>(type: "double precision", nullable: false),
+                    Duration = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MasterId = table.Column<Guid>(type: "uuid", nullable: false),
+                    OfficeId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,12 +71,12 @@ namespace CRS.Offer.Infrastructure.Migrations
                 name: "Schedules",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    WhatDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    FinishTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    MasterId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    OfficeId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    WhatDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    FinishTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MasterId = table.Column<Guid>(type: "uuid", nullable: false),
+                    OfficeId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,8 +99,8 @@ namespace CRS.Offer.Infrastructure.Migrations
                 name: "MasterServices",
                 columns: table => new
                 {
-                    MasterId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ServiceId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    MasterId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ServiceId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {

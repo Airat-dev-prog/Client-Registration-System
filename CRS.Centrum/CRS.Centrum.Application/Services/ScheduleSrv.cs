@@ -80,6 +80,5 @@ namespace CRS.Offer.Application.Services
 
             return schedule;
         }
-
     }
 }

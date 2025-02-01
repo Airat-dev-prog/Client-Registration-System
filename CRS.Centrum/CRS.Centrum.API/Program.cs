@@ -13,8 +13,7 @@ namespace CRS.Offer.API
 
             services.AddControllers();
 
-            //services.AddDataBaseContext("Npgsql",builder.Configuration.GetConnectionString("NpgsqlConnection")!);
-            services.AddDataBaseContext("Sqlite", builder.Configuration.GetConnectionString("SqliteConnection")!);
+            services.AddDataBaseContext("Npgsql",builder.Configuration.GetConnectionString("NpgsqlConnection")!);
             services.AddServices();
             services.AddEfRepository();
 

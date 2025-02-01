@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CRS.Centrum.Core\CRS.Centrum.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\DataBase\initdb\" />
+  </ItemGroup>
+
 </Project>

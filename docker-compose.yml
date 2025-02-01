@@ -1,0 +1,33 @@
+version: '1.0'
+
+name: "CRS"
+
+services:
+  DB_Centrum:
+    image: "postgres:latest"
+    container_name: 'pg_Centrum'
+    restart: always 
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: CRS_Centrum_DB
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./CRS.Centrum/CRS.Centrum.Infrastructure/Data/DataBase/initdb:/docker-entrypoint-initdb.d/
+  API:
+    container_name: 'API_Centrum'
+    image: "Centrum_webapi"
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    container_name: 'centrum-web-api'
+    restart: always
+    ports:
+      - "5001:8080"
+      - "5000:8080"
+    depends_on: 
+      - DB_Centrum
+volumes:
+  pg-data:
