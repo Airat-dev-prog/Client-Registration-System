@@ -1,5 +1,5 @@
 ﻿
-namespace CRS.Offer.Core.Repositories.Base
+namespace CRS.Centrum.Core.Repositories.Base
 {
     public interface IRepository<T> where T : class
     {

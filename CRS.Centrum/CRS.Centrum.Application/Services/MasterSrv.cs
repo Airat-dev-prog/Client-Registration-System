@@ -1,17 +1,11 @@
-﻿using CRS.Offer.Core.Repositories.Base;
-using CRS.Offer.Core.Entities;
+﻿using CRS.Centrum.Core.Repositories.Base;
+using CRS.Centrum.Core.Entities;
 using System.Diagnostics.Metrics;
 
-namespace CRS.Offer.Application.Services
+namespace CRS.Centrum.Application.Services
 {
-    public class MasterSrv
+    public class MasterSrv(IRepository<Master> _masterRepository)
     {
-        private readonly IRepository<Master> _masterRepository;
-        public MasterSrv(IRepository<Master> masterRepository)
-        {
-            _masterRepository = masterRepository;
-        }
-
         public async Task<IEnumerable<Master>> GetMastersAsync()
         {
             var masters = await _masterRepository.GetAllAsync();

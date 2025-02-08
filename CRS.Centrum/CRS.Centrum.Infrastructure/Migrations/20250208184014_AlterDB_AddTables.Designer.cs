@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CRS.Centrum.Infrastructure.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20250201080207_CreateDB")]
-    partial class CreateDB
+    [Migration("20250208184014_AlterDB_AddTables")]
+    partial class AlterDB_AddTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,63 @@ namespace CRS.Centrum.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("CRS.Centrum.Core.Entities.Appointment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("AppointmentDateTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("MasterId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OfficeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ServiceId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("MasterId");
+
+                    b.HasIndex("OfficeId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("Appointment");
+                });
+
+            modelBuilder.Entity("CRS.Centrum.Core.Entities.Client", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("BornDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("OfficeId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfficeId");
+
+                    b.ToTable("Client");
+                });
 
             modelBuilder.Entity("CRS.Centrum.Core.Entities.Master", b =>
                 {
@@ -144,6 +201,52 @@ namespace CRS.Centrum.Infrastructure.Migrations
                     b.ToTable("Services");
                 });
 
+            modelBuilder.Entity("CRS.Centrum.Core.Entities.Appointment", b =>
+                {
+                    b.HasOne("CRS.Centrum.Core.Entities.Client", "Client")
+                        .WithMany("Appointments")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CRS.Centrum.Core.Entities.Master", "Master")
+                        .WithMany("Appointments")
+                        .HasForeignKey("MasterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CRS.Centrum.Core.Entities.Office", "Office")
+                        .WithMany("Appointments")
+                        .HasForeignKey("OfficeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CRS.Centrum.Core.Entities.Service", "Service")
+                        .WithMany("Appointments")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Master");
+
+                    b.Navigation("Office");
+
+                    b.Navigation("Service");
+                });
+
+            modelBuilder.Entity("CRS.Centrum.Core.Entities.Client", b =>
+                {
+                    b.HasOne("CRS.Centrum.Core.Entities.Office", "Office")
+                        .WithMany("Clients")
+                        .HasForeignKey("OfficeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Office");
+                });
+
             modelBuilder.Entity("CRS.Centrum.Core.Entities.Master", b =>
                 {
                     b.HasOne("CRS.Centrum.Core.Entities.Office", "Office")
@@ -204,8 +307,15 @@ namespace CRS.Centrum.Infrastructure.Migrations
                     b.Navigation("Office");
                 });
 
+            modelBuilder.Entity("CRS.Centrum.Core.Entities.Client", b =>
+                {
+                    b.Navigation("Appointments");
+                });
+
             modelBuilder.Entity("CRS.Centrum.Core.Entities.Master", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("MasterService");
 
                     b.Navigation("Schedules");
@@ -213,6 +323,10 @@ namespace CRS.Centrum.Infrastructure.Migrations
 
             modelBuilder.Entity("CRS.Centrum.Core.Entities.Office", b =>
                 {
+                    b.Navigation("Appointments");
+
+                    b.Navigation("Clients");
+
                     b.Navigation("Masters");
 
                     b.Navigation("Schedules");
@@ -222,6 +336,8 @@ namespace CRS.Centrum.Infrastructure.Migrations
 
             modelBuilder.Entity("CRS.Centrum.Core.Entities.Service", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("MasterService");
                 });
 #pragma warning restore 612, 618

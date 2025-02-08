@@ -66,5 +66,41 @@ CREATE INDEX "IX_Services_OfficeId" ON "Services" ("OfficeId");
 INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
 VALUES ('20250201080207_CreateDB', '9.0.1');
 
+CREATE TABLE "Client" (
+    "Id" uuid NOT NULL,
+    "Name" text NOT NULL,
+    "BornDate" timestamp with time zone NOT NULL,
+    "OfficeId" uuid NOT NULL,
+    CONSTRAINT "PK_Client" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_Client_Offices_OfficeId" FOREIGN KEY ("OfficeId") REFERENCES "Offices" ("Id") ON DELETE CASCADE
+);
+
+CREATE TABLE "Appointment" (
+    "Id" uuid NOT NULL,
+    "AppointmentDateTime" timestamp with time zone NOT NULL,
+    "MasterId" uuid NOT NULL,
+    "ClientId" uuid NOT NULL,
+    "ServiceId" uuid NOT NULL,
+    "OfficeId" uuid NOT NULL,
+    CONSTRAINT "PK_Appointment" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_Appointment_Client_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Client" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Appointment_Masters_MasterId" FOREIGN KEY ("MasterId") REFERENCES "Masters" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Appointment_Offices_OfficeId" FOREIGN KEY ("OfficeId") REFERENCES "Offices" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Appointment_Services_ServiceId" FOREIGN KEY ("ServiceId") REFERENCES "Services" ("Id") ON DELETE CASCADE
+);
+
+CREATE INDEX "IX_Appointment_ClientId" ON "Appointment" ("ClientId");
+
+CREATE INDEX "IX_Appointment_MasterId" ON "Appointment" ("MasterId");
+
+CREATE INDEX "IX_Appointment_OfficeId" ON "Appointment" ("OfficeId");
+
+CREATE INDEX "IX_Appointment_ServiceId" ON "Appointment" ("ServiceId");
+
+CREATE INDEX "IX_Client_OfficeId" ON "Client" ("OfficeId");
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250208184014_AlterDB_AddTables', '9.0.1');
+
 COMMIT;
 

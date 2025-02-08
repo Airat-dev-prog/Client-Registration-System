@@ -1,9 +1,9 @@
-﻿using CRS.Offer.Core.Entities;
+﻿using CRS.Centrum.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data;
 
-namespace CRS.Offer.Infrastructure.Data
+namespace CRS.Centrum.Infrastructure.Data
 {
     public class DataBaseContext : DbContext
     {
@@ -33,9 +33,29 @@ namespace CRS.Offer.Infrastructure.Data
                 .HasOne<Office>(s => s.Office)
                 .WithMany(o => o.Schedules);
 
+            modelBuilder.Entity<Client>()
+                .HasOne<Office>(c => c.Office)
+                .WithMany(o => o.Clients);
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne<Office>(a => a.Office)
+                .WithMany(o => o.Appointments);
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne<Master>(a => a.Master)
+                .WithMany(m => m.Appointments);
+
             modelBuilder.Entity<Schedule>()
-                .HasOne<Master>(m => m.Master)
+                .HasOne<Master>(s => s.Master)
                 .WithMany(m => m.Schedules);
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne<Client>(a => a.Client)
+                .WithMany(c => c.Appointments);
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne<Service>(a => a.Service)
+                .WithMany(s => s.Appointments);
 
             modelBuilder.Entity<MasterService>()
                 .HasKey(ms => new { ms.MasterId, ms.ServiceId });

@@ -1,5 +1,5 @@
 ﻿
-namespace CRS.Offer.Core.Entities
+namespace CRS.Centrum.Core.Entities
 {
     public class Office
         : BaseEntity
@@ -17,12 +17,18 @@ namespace CRS.Offer.Core.Entities
         { get; set; }
 
         public List<Master> Masters 
-        { get; set; }
+        { get; set; } = [];
 
-        public List<Service> Services 
-        { get; set; }
+        public List<Service> Services
+        { get; set; } = [];
 
-        public List<Schedule> Schedules 
-        { get; set; }
+        public List<Schedule> Schedules
+        { get; set; } = [];
+
+        public List<Client> Clients
+        { get; set; } = [];
+
+        public List<Appointment> Appointments
+        { get; set; } = [];
     }
 }

@@ -1,16 +1,10 @@
-﻿using CRS.Offer.Core.Repositories.Base;
-using CRS.Offer.Core.Entities;
+﻿using CRS.Centrum.Core.Repositories.Base;
+using CRS.Centrum.Core.Entities;
 
-namespace CRS.Offer.Application.Services
+namespace CRS.Centrum.Application.Services
 {
-    public class ScheduleSrv
+    public class ScheduleSrv(IRepository<Schedule> _scheduleRepository)
     {
-        private readonly IRepository<Schedule> _scheduleRepository;
-        public ScheduleSrv(IRepository<Schedule> scheduleRepository)
-        {
-            _scheduleRepository = scheduleRepository;
-        }
-
         public async Task<IEnumerable<Schedule>> GetSchedulesAsync()
         {
             var schedules = await _scheduleRepository.GetAllAsync();

@@ -1,18 +1,12 @@
-﻿using CRS.Offer.Core.Repositories.Base;
-using CRS.Offer.Core.Entities;
+﻿using CRS.Centrum.Core.Repositories.Base;
+using CRS.Centrum.Core.Entities;
 using System.Diagnostics;
 using System.Xml.Linq;
 
-namespace CRS.Offer.Application.Services
+namespace CRS.Centrum.Application.Services
 {
-    public class ServiceSrv
+    public class ServiceSrv(IRepository<Service> _serviceRepository)
     {
-        private readonly IRepository<Service> _serviceRepository;
-        public ServiceSrv(IRepository<Service> serviceRepository)
-        {
-            _serviceRepository = serviceRepository;
-        }
-
         public async Task<IEnumerable<Service>> GetServicesAsync()
         {
             var services = await _serviceRepository.GetAllAsync();

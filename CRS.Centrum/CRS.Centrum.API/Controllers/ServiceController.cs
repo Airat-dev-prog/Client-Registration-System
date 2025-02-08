@@ -1,9 +1,8 @@
-﻿using CRS.Offer.Application.Services;
-using CRS.Offer.Core.Entities;
-using CRS.Offer.Core.Repositories.Base;
+﻿using CRS.Centrum.Application.Services;
+using CRS.Centrum.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CRS.Offer.API.Controllers
+namespace CRS.Centrum.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

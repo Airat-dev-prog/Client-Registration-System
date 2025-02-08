@@ -1,6 +1,6 @@
-@CRS.Offer.API_HostAddress = http://localhost:5161
+@CRS.Centrum.API_HostAddress = http://localhost:5161
 
-GET {{CRS.Offer.API_HostAddress}}/weatherforecast/
+GET {{CRS.Centrum.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

@@ -1,18 +1,12 @@
-﻿using CRS.Offer.Core.Repositories.Base;
-using CRS.Offer.Core.Entities;
+﻿using CRS.Centrum.Core.Repositories.Base;
+using CRS.Centrum.Core.Entities;
 using System.Net;
 using System.Xml.Linq;
 
-namespace CRS.Offer.Application.Services
+namespace CRS.Centrum.Application.Services
 {
-    public class OfficeSrv
+    public class OfficeSrv(IRepository<Office> _officeRepository)
     {
-        private readonly IRepository<Office> _officeRepository;
-        public OfficeSrv(IRepository<Office> officeRepository)
-        {
-            _officeRepository = officeRepository;
-        }
-
         public async Task<IEnumerable<Office>> GetOfficesAsync()
         {
             var offices = await _officeRepository.GetAllAsync();

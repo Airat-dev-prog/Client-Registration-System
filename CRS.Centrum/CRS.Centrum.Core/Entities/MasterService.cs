@@ -1,12 +1,13 @@
 ﻿
-namespace CRS.Offer.Core.Entities
+namespace CRS.Centrum.Core.Entities
 {
     public class MasterService
     {
         public Guid MasterId
         { get; set; }
 
-        public Master Master { get; set; }
+        public Master Master 
+        { get; set; }
 
         public Guid ServiceId
         { get; set; }

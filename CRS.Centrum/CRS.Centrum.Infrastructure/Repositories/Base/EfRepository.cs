@@ -1,9 +1,9 @@
-﻿using CRS.Offer.Core.Entities;
-using CRS.Offer.Core.Repositories.Base;
-using CRS.Offer.Infrastructure.Data;
+﻿using CRS.Centrum.Core.Entities;
+using CRS.Centrum.Core.Repositories.Base;
+using CRS.Centrum.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRS.Offer.Infrastructure.Repositories.Base
+namespace CRS.Centrum.Infrastructure.Repositories.Base
 {
     public class EfRepository<T> : IRepository<T> where T : BaseEntity
     {

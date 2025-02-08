@@ -1,5 +1,5 @@
 ﻿
-namespace CRS.Offer.Core.Entities
+namespace CRS.Centrum.Core.Entities
 {
     public class Schedule
         : BaseEntity
@@ -15,8 +15,8 @@ namespace CRS.Offer.Core.Entities
 
         public Guid MasterId
         { get; set; }
-
-        public Master Master { get; set; }
+        public Master Master 
+        { get; set; }
 
         public Guid OfficeId
         { get; set; }

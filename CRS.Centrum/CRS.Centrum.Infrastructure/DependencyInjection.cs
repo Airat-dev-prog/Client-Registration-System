@@ -1,11 +1,11 @@
-﻿using CRS.Offer.Core.Repositories.Base;
-using CRS.Offer.Infrastructure.Data;
-using CRS.Offer.Infrastructure.Repositories.Base;
+﻿using CRS.Centrum.Core.Repositories.Base;
+using CRS.Centrum.Infrastructure.Data;
+using CRS.Centrum.Infrastructure.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using CRS.Offer.Application.Services;
+using CRS.Centrum.Application.Services;
 
-namespace CRS.Offer.Infrastructure
+namespace CRS.Centrum.Infrastructure
 {
     public static class DependencyInjection
     {

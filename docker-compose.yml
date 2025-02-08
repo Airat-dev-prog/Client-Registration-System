@@ -1,4 +1,4 @@
-version: '1.0'
+version: '3.8'
 
 name: "CRS"
 
@@ -18,15 +18,27 @@ services:
       - ./CRS.Centrum/CRS.Centrum.Infrastructure/Data/DataBase/initdb:/docker-entrypoint-initdb.d/
   WebAPI_Centrum:
     container_name: 'API_Centrum'
-    image: "Centrum_webapi"
+    image: "centrum-webapi"
     build:
-      context: ./src
+      context: ./CRS.Centrum
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "5001:8080"
-      - "5000:8080"
+      - "5090:8080"
+      - "5091:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=PRODUCTION  
+      - ASPNETCORE_URLS=https://+:8081;http://+:8080
+      - ASPNETCORE_HTTPS_PORT=8081
+      - ASPNETCORE_HTTP_PORT=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/.aspnet/https/CRS.Centrum.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Centrum
+      - "ConnectionStrings:NpgsqlConnection=Host=pg_Centrum;Database=CRS_Centrum_DB;Username=postgres;Password=postgres"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/.aspnet/https:ro
     depends_on: 
       - DB_Centrum
 volumes:
-  pg-data:
+  pg-centrum-db:

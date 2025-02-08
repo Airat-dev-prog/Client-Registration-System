@@ -5,18 +5,21 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 5090 
+EXPOSE 5091 
 
 
 # Этот этап используется для сборки проекта службы
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["../CRS.Centrum.API/CRS.Centrum.API.csproj", "CRS.Centrum.API/"]
+WORKDIR /CRS.Centrum
+COPY ["CRS.Centrum.API/CRS.Centrum.API.csproj", "CRS.Centrum.API/"]
+COPY ["CRS.Centrum.Infrastructure/CRS.Centrum.Infrastructure.csproj", "CRS.Centrum.Infrastructure/"]
+COPY ["CRS.Centrum.Application/CRS.Centrum.Application.csproj", "CRS.Centrum.Application/"]
+COPY ["CRS.Centrum.Core/CRS.Centrum.Core.csproj", "CRS.Centrum.Core/"]
 RUN dotnet restore "./CRS.Centrum.API/CRS.Centrum.API.csproj"
-COPY . .
-WORKDIR "/src/CRS.Centrum.API"
+COPY ../ .
+WORKDIR "/CRS.Centrum/CRS.Centrum.API"
 RUN dotnet build "./CRS.Centrum.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап
