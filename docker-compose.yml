@@ -4,8 +4,8 @@ name: "CRS"
 
 services:
   DB_Centrum:
-    image: "postgres:latest"
-    container_name: 'pg_Centrum'
+    container_name: "pg_Centrum"
+    image: 'postgres:latest'
     restart: always 
     ports:
       - "5433:5432"
@@ -16,23 +16,27 @@ services:
     volumes:
       - pg-centrum-db:/var/lib/postgresql/data
       - ./CRS.Centrum/CRS.Centrum.Infrastructure/Data/DataBase/initdb:/docker-entrypoint-initdb.d/
+    networks:
+      - crs-network
+
   WebAPI_Centrum:
-    container_name: 'API_Centrum'
-    image: "centrum-webapi"
+    container_name: "API_Centrum"
+    image: "crs-centrum-webapi"
+    hostname: WebAPI_Centrum
     build:
       context: ./CRS.Centrum
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "5090:8080"
-      - "5091:8081"
+      - "5090:8090"
+      - "5091:8091"
     environment:
       - ASPNETCORE_ENVIRONMENT=PRODUCTION  
-      - ASPNETCORE_URLS=https://+:8081;http://+:8080
-      - ASPNETCORE_HTTPS_PORT=8081
-      - ASPNETCORE_HTTP_PORT=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
-      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_URLS=https://+:8091;http://+:8090
+      - ASPNETCORE_HTTPS_PORT=8091
+      - ASPNETCORE_HTTP_PORT=8090
+      - ASPNETCORE_HTTPS_PORTS=8091
+      - ASPNETCORE_HTTP_PORTS=8090
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/.aspnet/https/CRS.Centrum.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=Centrum
       - "ConnectionStrings:NpgsqlConnection=Host=pg_Centrum;Database=CRS_Centrum_DB;Username=postgres;Password=postgres"
@@ -40,5 +44,40 @@ services:
       - ${APPDATA}/ASP.NET/Https:/.aspnet/https:ro
     depends_on: 
       - DB_Centrum
+    networks:
+      - crs-network
+
+  Gateway:
+    container_name: "Gateway"
+    image: 'crs-gateway'
+    build:
+      context: ./CRS.Gateway
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "5080:8080"
+      - "5081:8081"
+    environment:    
+      - ASPNETCORE_ENVIRONMENT=PRODUCTION  
+      - ASPNETCORE_URLS=https://+:8081;http://+:8080
+      - ASPNETCORE_HTTPS_PORT=8081
+      - ASPNETCORE_HTTP_PORT=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/.aspnet/https/CRS.Gateway.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Gateway
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/.aspnet/https:ro
+    links:
+      - WebAPI_Centrum
+    depends_on: 
+      - WebAPI_Centrum
+    networks:
+      - crs-network
+
 volumes:
   pg-centrum-db:
+
+networks:
+  crs-network:
+    driver: bridge
