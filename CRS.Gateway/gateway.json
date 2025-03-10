@@ -1,0 +1,30 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/offices",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": "WebAPI_Centrum:8090",
+      "UpstreamPathTemplate": "/offices",
+      "UpstreamHttpMethods": [ "GET", "POST" ],
+      "UpstreamSchemes": [ "http" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/offices",
+      "DownstreamScheme": "https",
+      //"DownstreamHostAndPorts": "localhost:5091",           //for VS
+      "DownstreamHostAndPorts": "WebAPI_Centrum:8091",      //for Docker
+      "UpstreamPathTemplate": "/offices",
+      "UpstreamHttpMethods": [ "GET", "POST" ],
+      "UpstreamSchemes": [ "https" ]
+    }
+  ]
+}
+
+
+
+/*
++ context.Request.Method-GET
++ context.Request.Scheme-HTTP
++ context.Request.Path-/
+- context.Request.Host-localhost:port
+ */
