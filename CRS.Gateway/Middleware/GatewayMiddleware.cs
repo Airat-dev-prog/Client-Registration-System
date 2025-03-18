@@ -73,7 +73,6 @@ namespace CRS.Gateway.Middleware
             await response.Content.CopyToAsync(context.Response.Body);
         }
 
-
         private HttpRequestMessage CreateNewRequest(HttpContext context, Uri _uri)
         {
             var newRequest = new HttpRequestMessage(new HttpMethod(context.Request.Method), _uri);

@@ -1,0 +1,21 @@
+body {
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    height: calc(100vh - 73px);
+  }
+  
+  .nav-link {
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+  }
+
+  .my-border {
+    border: 2px solid rgb(25, 23, 150);
+    margin: 0px;
+  }
+  

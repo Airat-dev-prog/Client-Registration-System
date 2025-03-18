@@ -11,10 +11,25 @@
     {
       "DownstreamPathTemplate": "/api/offices",
       "DownstreamScheme": "https",
-      //"DownstreamHostAndPorts": "localhost:5091",           //for VS
-      "DownstreamHostAndPorts": "WebAPI_Centrum:8091",      //for Docker
+      "DownstreamHostAndPorts": "WebAPI_Centrum:8091",
       "UpstreamPathTemplate": "/offices",
       "UpstreamHttpMethods": [ "GET", "POST" ],
+      "UpstreamSchemes": [ "https" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/offices/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": "WebAPI_Centrum:8090",
+      "UpstreamPathTemplate": "/offices/{id}",
+      "UpstreamHttpMethods": [ "GET", "PUT" ],
+      "UpstreamSchemes": [ "http" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/offices/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": "WebAPI_Centrum:8091",
+      "UpstreamPathTemplate": "/offices/{id}",
+      "UpstreamHttpMethods": [ "GET", "PUT" ],
       "UpstreamSchemes": [ "https" ]
     }
   ]

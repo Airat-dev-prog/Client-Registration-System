@@ -9,14 +9,32 @@ namespace CRS.Gateway
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-                        
+
             //builder.Configuration.AddEnvironmentVariables();
-            
-            builder.Configuration.AddJsonFile("gateway.json");
-            
+
+
+            if (builder.Environment.IsDevelopment())
+                builder.Configuration.AddJsonFile("gateway.Development.json");
+            else
+                builder.Configuration.AddJsonFile("gateway.json");
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173")   // AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
             //builder.Services.AddHttpsRedirection(opt => opt.HttpsPort = 5081);
 
             var app = builder.Build();
+
+            app.UseRouting();
+            app.UseCors("AllowAll");
 
             //if (app.Environment.IsDevelopment()) {}
 
@@ -24,7 +42,7 @@ namespace CRS.Gateway
 
             app.UseGateway(app.Configuration.GetSection("Routes").Get<List<RouteParams>>());
 
-            app.MapGet("/", HandleStaticPage );
+            app.MapGet("/", HandleStaticPage);
 
             app.Run();
 
